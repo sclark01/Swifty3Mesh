@@ -11,6 +11,7 @@
 		5814D71B1D661E63003A33BE /* Swifty3MeshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5814D71A1D661E63003A33BE /* Swifty3MeshTests.swift */; };
 		5814D71D1D661E63003A33BE /* Swifty3Mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 5814D70F1D661E63003A33BE /* Swifty3Mesh.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5814D7451D66222F003A33BE /* MeshManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5814D7441D66222F003A33BE /* MeshManager.swift */; };
+		5814D75E1D664650003A33BE /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5814D75D1D664650003A33BE /* CoreBluetooth.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		5814D71A1D661E63003A33BE /* Swifty3MeshTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swifty3MeshTests.swift; sourceTree = "<group>"; };
 		5814D71C1D661E63003A33BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5814D7441D66222F003A33BE /* MeshManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeshManager.swift; sourceTree = "<group>"; };
+		5814D75D1D664650003A33BE /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5814D75E1D664650003A33BE /* CoreBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +61,7 @@
 				5814D70E1D661E63003A33BE /* Swifty3Mesh */,
 				5814D7191D661E63003A33BE /* Swifty3MeshTests */,
 				5814D70D1D661E63003A33BE /* Products */,
+				5814D75C1D664650003A33BE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,6 +91,14 @@
 				5814D71C1D661E63003A33BE /* Info.plist */,
 			);
 			path = Swifty3MeshTests;
+			sourceTree = "<group>";
+		};
+		5814D75C1D664650003A33BE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5814D75D1D664650003A33BE /* CoreBluetooth.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
