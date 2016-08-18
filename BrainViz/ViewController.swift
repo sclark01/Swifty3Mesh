@@ -1,25 +1,14 @@
-//
-//  ViewController.swift
-//  BrainViz
-//
-//  Created by Shea Clark-Tieche on 8/18/16.
-//  Copyright © 2016 ThoughtWorks. All rights reserved.
-//
-
 import UIKit
+import Swifty3Mesh
 
 class ViewController: UIViewController {
+    @IBOutlet weak var label: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let mm = MeshManager(withStartingValue: 10)
+        label.text = "\(mm.start())"
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 
