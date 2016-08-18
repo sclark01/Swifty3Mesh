@@ -10,6 +10,7 @@
 		5814D7161D661E63003A33BE /* Swifty3Mesh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5814D70C1D661E63003A33BE /* Swifty3Mesh.framework */; };
 		5814D71B1D661E63003A33BE /* Swifty3MeshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5814D71A1D661E63003A33BE /* Swifty3MeshTests.swift */; };
 		5814D71D1D661E63003A33BE /* Swifty3Mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 5814D70F1D661E63003A33BE /* Swifty3Mesh.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5814D7451D66222F003A33BE /* MeshManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5814D7441D66222F003A33BE /* MeshManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		5814D7151D661E63003A33BE /* Swifty3MeshTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Swifty3MeshTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5814D71A1D661E63003A33BE /* Swifty3MeshTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swifty3MeshTests.swift; sourceTree = "<group>"; };
 		5814D71C1D661E63003A33BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5814D7441D66222F003A33BE /* MeshManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeshManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				5814D70F1D661E63003A33BE /* Swifty3Mesh.h */,
 				5814D7101D661E63003A33BE /* Info.plist */,
+				5814D7441D66222F003A33BE /* MeshManager.swift */,
 			);
 			path = Swifty3Mesh;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 					5814D70B1D661E63003A33BE = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 93BUV7U238;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					5814D7141D661E63003A33BE = {
@@ -198,6 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5814D7451D66222F003A33BE /* MeshManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +327,7 @@
 		5814D7211D661E63003A33BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 93BUV7U238;
@@ -334,6 +340,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.thoughtworks.Swifty3Mesh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -341,6 +348,7 @@
 		5814D7221D661E63003A33BE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 93BUV7U238;
@@ -400,6 +408,7 @@
 				5814D7221D661E63003A33BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5814D7231D661E63003A33BE /* Build configuration list for PBXNativeTarget "Swifty3MeshTests" */ = {
 			isa = XCConfigurationList;
@@ -408,6 +417,7 @@
 				5814D7251D661E63003A33BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
