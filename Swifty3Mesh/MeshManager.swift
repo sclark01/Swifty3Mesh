@@ -1,16 +1,29 @@
 import Foundation
 import CoreBluetooth
 
-public class MeshManager {
+public class MeshManager : NSObject, CBCentralManagerDelegate {
 
-    let startingVal: Int
+    var nodes: Array<String>
+    var centralManager: CBCentralManager?
 
-    public init(withStartingValue value: Int) {
-        self.startingVal = value
+    override public init() {
+        nodes = []
     }
 
-    public func start() -> Int {
-        return 1 + startingVal
+    public func start() {
+        self.centralManager = CBCentralManager(delegate: self, queue: nil)
+    }
+
+    public func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        if central.state == .poweredOn {
+            self.centralManager?.scanForPeripherals(withServices: nil, options: nil)
+        } else {
+            // Bluetooth is not on, alert user
+        }
+    }
+
+     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        print(peripheral.name)
     }
 }
 
