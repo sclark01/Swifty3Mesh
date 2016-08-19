@@ -3,11 +3,11 @@ import CoreBluetooth
 
 public class MeshManager : NSObject, CBCentralManagerDelegate {
 
-    var nodes: Array<String>
+    var nodes: [String: CBPeripheral]
     var centralManager: CBCentralManager?
 
     override public init() {
-        nodes = []
+        nodes = [:]
     }
 
     public func start() {
@@ -23,7 +23,16 @@ public class MeshManager : NSObject, CBCentralManagerDelegate {
     }
 
      public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        print(peripheral.name)
+        guard let name = peripheral.name  else { return }
+        if name.contains("VB-") {
+            nodes[name] = peripheral
+            centralManager?.connect(peripheral, options: nil)
+        }
+    }
+
+    public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        print("connect fool")
+        // lets start talking!!!!!!
     }
 }
 
