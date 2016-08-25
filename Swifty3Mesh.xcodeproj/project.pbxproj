@@ -13,6 +13,7 @@
 		5814D7451D66222F003A33BE /* MeshManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5814D7441D66222F003A33BE /* MeshManager.swift */; };
 		5814D75E1D664650003A33BE /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5814D75D1D664650003A33BE /* CoreBluetooth.framework */; };
 		581B946C1D6E3F4900903E62 /* MeshMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581B946B1D6E3F4900903E62 /* MeshMessages.swift */; };
+		581B94701D6F34B800903E62 /* MeshLEDColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581B946F1D6F34B800903E62 /* MeshLEDColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 		5814D7441D66222F003A33BE /* MeshManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeshManager.swift; sourceTree = "<group>"; };
 		5814D75D1D664650003A33BE /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		581B946B1D6E3F4900903E62 /* MeshMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeshMessages.swift; sourceTree = "<group>"; };
+		581B946F1D6F34B800903E62 /* MeshLEDColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeshLEDColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				5814D7101D661E63003A33BE /* Info.plist */,
 				5814D7441D66222F003A33BE /* MeshManager.swift */,
 				581B946B1D6E3F4900903E62 /* MeshMessages.swift */,
+				581B946F1D6F34B800903E62 /* MeshLEDColor.swift */,
 			);
 			path = Swifty3Mesh;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			files = (
 				581B946C1D6E3F4900903E62 /* MeshMessages.swift in Sources */,
 				5814D7451D66222F003A33BE /* MeshManager.swift in Sources */,
+				581B94701D6F34B800903E62 /* MeshLEDColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

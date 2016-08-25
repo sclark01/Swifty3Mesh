@@ -22,8 +22,7 @@ public class MeshManager : NSObject {
         guard let peripheral = nodes[name],
             let characteristic = peripheral.services?.first?.characteristics?.first else { return }
 
-        let data = Data(bytes: [message.messageType])
-        peripheral.writeValue(data, for: characteristic, type: .withoutResponse)
+        peripheral.writeValue(message.messageType, for: characteristic, type: .withoutResponse)
     }
 }
 
@@ -72,13 +71,9 @@ extension MeshManager : CBPeripheralDelegate {
             print("Error Discovering Characteristics")
             return
         }
-        guard let characteristic = service.characteristics?.first else { return }
 
-        let initHandshakeString = "011"
-        guard let initHandshakeData = initHandshakeString.data(using: String.Encoding.utf8) else { return }
-        peripheral.setNotifyValue(true, for: characteristic)
-
-        peripheral.writeValue(initHandshakeData, for: characteristic, type: .withResponse)
+        guard let name = peripheral.name else { return }
+        send(message: .Light(color: .White), toNodeNamed: name)
     }
 }
 
