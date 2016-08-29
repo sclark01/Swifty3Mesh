@@ -18,7 +18,12 @@ class ViewController: UIViewController {
     }
 
     @IBAction func activateBuzzerTouched(_ sender: UIButton) {
-        sendMessageToAllNodes(message: .Buzzer(volume: 100))
+        let k: UInt16 = 50
+        let duration: UInt16 = 400
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.sendMessageToAllNodes(message: .Buzzer(frequency: k, duration: duration))
+        }
     }
 
     private func sendMessageToAllNodes(message: MeshMessages) {

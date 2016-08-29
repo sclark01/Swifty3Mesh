@@ -6,12 +6,17 @@ public class MeshManager : NSObject {
     var nodes: [String: CBPeripheral]
     var centralManager: CBCentralManager?
 
+    internal var pastConnections: [UUID]
+
     override public init() {
         nodes = [:]
+        pastConnections = []
     }
 
     public func start() {
-        self.centralManager = CBCentralManager(delegate: self, queue: nil)
+        if centralManager == nil {
+             centralManager = CBCentralManager(delegate: self, queue: nil)
+        }
     }
 
     public func listConnectedNodes() -> [String] {
@@ -23,6 +28,11 @@ public class MeshManager : NSObject {
             let characteristic = peripheral.services?.first?.characteristics?.first else { return }
 
         peripheral.writeValue(message.messageType, for: characteristic, type: .withoutResponse)
+    }
+
+    public func disconnect(fromNode node: String) {
+        guard let peripheral = nodes[node] else { return }
+        centralManager?.cancelPeripheralConnection(peripheral)
     }
 }
 
@@ -46,13 +56,19 @@ extension MeshManager : CBCentralManagerDelegate {
     }
 
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        peripheral.delegate = self
         print("did connect to " + peripheral.name!)
+
+        peripheral.delegate = self
         peripheral.discoverServices(nil)
+        pastConnections.append(peripheral.identifier)
     }
 
     public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         print("Failed to connect to \(peripheral.name ?? "")")
+    }
+
+    public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        print("disconnected from \(peripheral.name)")
     }
 }
 
