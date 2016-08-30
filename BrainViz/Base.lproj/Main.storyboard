@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,55 +18,89 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brain" translatesAutoresizingMaskIntoConstraints="NO" id="BbK-PQ-Ehk">
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThougthWorks" translatesAutoresizingMaskIntoConstraints="NO" id="vhh-DC-bh6">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89Y-nF-QsO">
+                                <frame key="frameInset" minX="385" minY="475" width="254" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cyan" image="cyan"/>
+                                <connections>
+                                    <action selector="colorTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yu2-pB-QAH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17h-dC-wZb">
+                                <frame key="frameInset" minX="590" minY="373" width="254" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Green" image="green"/>
+                                <connections>
+                                    <action selector="colorTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MmR-8s-9iC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dwh-52-6rM">
+                                <frame key="frameInset" minX="564" minY="165" width="254" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Yellow" image="yellow"/>
+                                <connections>
+                                    <action selector="colorTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RwN-a7-TQv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QIS-AQ-fVs">
+                                <frame key="frameInset" minX="385" minY="28" width="254" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Red" image="red"/>
+                                <connections>
+                                    <action selector="colorTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jx6-7s-Lq1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V46-kt-mwF">
+                                <frame key="frameInset" minX="198" minY="127" width="254" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Magenta" image="magenta"/>
+                                <connections>
+                                    <action selector="colorTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vGI-FY-nTl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYs-Hb-DtF">
+                                <frame key="frameInset" minX="156" minY="335" width="254" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Blue" image="Blue"/>
+                                <connections>
+                                    <action selector="colorTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zs6-J6-IFk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Voz-JM-00s">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="pYH-Gp-9hb"/>
-                                    <constraint firstAttribute="width" constant="240" id="sfL-d4-wmd"/>
+                                    <constraint firstAttribute="height" constant="200" id="B2f-f4-YcF"/>
+                                    <constraint firstAttribute="width" constant="200" id="LXr-ge-Fpr"/>
                                 </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Meditating" translatesAutoresizingMaskIntoConstraints="NO" id="Z73-Nl-ZT8">
-                                <frame key="frameInset" minX="588" minY="224" width="130" height="98"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Od4-Oo-zX4">
-                                <frame key="frameInset" minX="406" minY="208" width="130" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Activate Lights"/>
+                                <state key="normal" image="Alarm"/>
                                 <connections>
-                                    <action selector="activateLightTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KG7-gc-QIa"/>
+                                    <action selector="alarmTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QU3-cR-XFA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSC-Ql-0jT">
-                                <frame key="frameInset" minX="518" minY="379" width="134" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ThoughtWorks" translatesAutoresizingMaskIntoConstraints="NO" id="MsB-ro-B67">
+                                <frame key="frameInset" minX="659" minY="632" width="365" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Activate Buzzer"/>
-                                <connections>
-                                    <action selector="activateBuzzerTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xou-ZQ-FET"/>
-                                </connections>
-                            </button>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BbK-PQ-Ehk" secondAttribute="bottom" constant="-20" id="72I-Yu-lti"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vhh-DC-bh6" secondAttribute="bottom" id="BaL-YW-Edb"/>
-                            <constraint firstItem="BbK-PQ-Ehk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="HJH-mZ-d5H"/>
-                            <constraint firstItem="BbK-PQ-Ehk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="NgM-ef-CVU"/>
-                            <constraint firstItem="vhh-DC-bh6" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="U5z-fR-fd0"/>
-                            <constraint firstItem="BbK-PQ-Ehk" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="20" id="fCn-bE-T2j"/>
+                            <constraint firstItem="Voz-JM-00s" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="GVg-aa-lJO"/>
+                            <constraint firstItem="Voz-JM-00s" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-27" id="Re5-Za-8VP"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.6953125" y="138.28125"/>
+            <point key="canvasLocation" x="137.6953125" y="139.84375"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Brain" width="2000" height="2000"/>
-        <image name="Meditating" width="410" height="410"/>
-        <image name="ThougthWorks" width="1754" height="531"/>
+        <image name="Alarm" width="800" height="800"/>
+        <image name="Blue" width="200" height="200"/>
+        <image name="ThoughtWorks" width="1754" height="531"/>
+        <image name="cyan" width="200" height="200"/>
+        <image name="green" width="200" height="200"/>
+        <image name="magenta" width="200" height="200"/>
+        <image name="red" width="200" height="200"/>
+        <image name="yellow" width="200" height="200"/>
     </resources>
 </document>

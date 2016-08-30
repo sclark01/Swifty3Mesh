@@ -12,18 +12,15 @@ class ViewController: UIViewController {
         manager?.start()
     }
 
-    @IBAction func activateLightTouched(_ sender: UIButton) {
-        sendMessageToAllNodes(message: .Light(color: colors[lightButtonTapCount]))
-        lightButtonTapCount = (lightButtonTapCount + 1) % colors.count
+    @IBAction func colorTapped(_ sender: UIButton) {
+        guard let colorString = sender.titleLabel?.text,
+        let color = colors[colorString.lowercased()] else { return }
+        
+        sendMessageToAllNodes(message: .Light(color: color))
     }
 
-    @IBAction func activateBuzzerTouched(_ sender: UIButton) {
-        let k: UInt16 = 50
-        let duration: UInt16 = 400
-        DispatchQueue.main.async { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.sendMessageToAllNodes(message: .Buzzer(frequency: k, duration: duration))
-        }
+    @IBAction func alarmTapped(_ sender: UIButton) {
+        
     }
 
     private func sendMessageToAllNodes(message: MeshMessages) {
