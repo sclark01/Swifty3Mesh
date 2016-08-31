@@ -14,6 +14,7 @@
 		5814D73D1D66220D003A33BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5814D73B1D66220D003A33BE /* LaunchScreen.storyboard */; };
 		5814D75B1D66268B003A33BE /* Swifty3Mesh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5814D7581D662679003A33BE /* Swifty3Mesh.framework */; };
 		5814D7631D66932C003A33BE /* Swifty3Mesh.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5814D7581D662679003A33BE /* Swifty3Mesh.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		587B0C071D77830E00380EA8 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587B0C061D77830E00380EA8 /* Alarm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		5814D73C1D66220D003A33BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5814D73E1D66220D003A33BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5814D7521D662679003A33BE /* Swifty3Mesh.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Swifty3Mesh.xcodeproj; sourceTree = "<group>"; };
+		587B0C061D77830E00380EA8 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				5814D7391D66220D003A33BE /* Assets.xcassets */,
 				5814D73B1D66220D003A33BE /* LaunchScreen.storyboard */,
 				5814D73E1D66220D003A33BE /* Info.plist */,
+				587B0C061D77830E00380EA8 /* Alarm.swift */,
 			);
 			path = BrainViz;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 			files = (
 				5814D7351D66220D003A33BE /* ViewController.swift in Sources */,
 				5814D7331D66220D003A33BE /* AppDelegate.swift in Sources */,
+				587B0C071D77830E00380EA8 /* Alarm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

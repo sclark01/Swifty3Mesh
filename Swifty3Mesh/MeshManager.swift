@@ -30,6 +30,12 @@ public class MeshManager : NSObject {
         peripheral.writeValue(message.messageType, for: characteristic, type: .withoutResponse)
     }
 
+    public func sendToAllNodes(message: MeshMessages) {
+        for node in listConnectedNodes() {
+            send(message: message, toNodeNamed: node)
+        }
+    }
+
     public func disconnect(fromNode node: String) {
         guard let peripheral = nodes[node] else { return }
         centralManager?.cancelPeripheralConnection(peripheral)
