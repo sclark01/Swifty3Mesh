@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.framework = "Foundation"
   s.framework = "CoreBluetooth"
  
-  s.source_files = "Swifty3Mesh/**/*.{swift}"
+  s.source_files = "Swifty3Mesh/Swifty3Mesh/*.{swift}"
  
 end
 
