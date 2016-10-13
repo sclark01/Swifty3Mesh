@@ -65,9 +65,8 @@ extension MeshManager : CBPeripheralManagerDelegate {
             service.characteristics = [(characteristic)!]
 
             peripheralManager?.add(service)
-            print("UUID of our characteristic is \(characteristic?.uuid)")
             
-            peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey : [service.uuid], CBAdvertisementDataLocalNameKey: "foo"])
+            //peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey : [service.uuid], CBAdvertisementDataLocalNameKey: "foo"])
  
         } else {
             print("Peripheral Manager for Bluetooth is not on")
@@ -100,7 +99,7 @@ extension MeshManager : CBPeripheralManagerDelegate {
 extension MeshManager : CBCentralManagerDelegate {
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == .poweredOn {
-            //self.centralManager?.scanForPeripherals(withServices: nil, options: nil)
+            self.centralManager?.scanForPeripherals(withServices: nil, options: nil)
         } else {
             print("Central Manager for Bluetooth is not on")
         }
@@ -109,7 +108,7 @@ extension MeshManager : CBCentralManagerDelegate {
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         guard let name = peripheral.name else { return }
 
-        if name.contains("Mesh-1BD0") {
+        if name.contains("Mesh-A282") {
             nodes[name] = peripheral
             centralManager?.connect(peripheral, options: nil)
             print("connecting to \(name)")
@@ -154,8 +153,7 @@ extension MeshManager : CBPeripheralDelegate {
         print("UUID of discovered characteristic is \(peripheral.services?.first?.characteristics?.first?.uuid)")
         
         print("About to send message to \(peripheral.name)")
-        send(message: .Broadcast(message: "hi"), toNodeNamed: name)
-        //send(message: .Light(color: .White), toNodeNamed: name)
+        send(message: .Handshake(), toNodeNamed: name)
     }
 }
 

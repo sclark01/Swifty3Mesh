@@ -4,6 +4,7 @@ public enum MeshMessages {
     case Light(color: MeshLEDColor)
     case Buzzer(frequency: UInt16, duration: UInt16)
     case Broadcast(message: String)
+    case Handshake()
 
     internal var messageType: Data {
         switch self {
@@ -15,7 +16,12 @@ public enum MeshMessages {
             let (durationHiVal, durationLowValue) = duration.split()
             return Data(bytes: [messageCode, frequencyHiVal, frequencyLowVal, durationHiVal, durationLowValue])
         case .Broadcast(let message):
-            return Data(bytes: [messageCode])
+            var messageTypeData = Data(bytes: [messageCode])
+            //var messageData = Data(base64Encoded: message)
+            //messageTypeData.append(messageData!)
+            return messageTypeData
+        case .Handshake():
+            return Data(bytes: [messageCode, UInt8.max, UInt8.max, UInt8.max, UInt8.max, 0, 5])
         }
     }
 
@@ -27,6 +33,8 @@ public enum MeshMessages {
             return 9
         case .Broadcast:
             return 1
+        case .Handshake:
+            return 2
         }
     }
 }
