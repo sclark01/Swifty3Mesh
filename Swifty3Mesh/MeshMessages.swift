@@ -3,6 +3,7 @@ import Foundation
 public enum MeshMessages {
     case Light(color: MeshLEDColor)
     case Buzzer(frequency: UInt16, duration: UInt16)
+    case Broadcast(message: String)
 
     internal var messageType: Data {
         switch self {
@@ -12,8 +13,9 @@ public enum MeshMessages {
         case .Buzzer(let frequency, let duration):
             let (frequencyHiVal, frequencyLowVal) = frequency.split()
             let (durationHiVal, durationLowValue) = duration.split()
-            
             return Data(bytes: [messageCode, frequencyHiVal, frequencyLowVal, durationHiVal, durationLowValue])
+        case .Broadcast(let message):
+            return Data(bytes: [messageCode])
         }
     }
 
@@ -23,6 +25,8 @@ public enum MeshMessages {
             return 8
         case .Buzzer:
             return 9
+        case .Broadcast:
+            return 1
         }
     }
 }

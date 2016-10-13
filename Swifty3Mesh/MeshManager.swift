@@ -5,6 +5,8 @@ public class MeshManager : NSObject {
 
     var nodes: [String: CBPeripheral]
     var centralManager: CBCentralManager?
+    var peripheralManager: CBPeripheralManager?
+    var characteristic: CBMutableCharacteristic?
 
     internal var pastConnections: [UUID]
 
@@ -16,6 +18,9 @@ public class MeshManager : NSObject {
     public func start() {
         if centralManager == nil {
              centralManager = CBCentralManager(delegate: self, queue: nil)
+        }
+        if peripheralManager == nil {
+            peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
         }
     }
 
@@ -30,6 +35,12 @@ public class MeshManager : NSObject {
         peripheral.writeValue(message.messageType, for: characteristic, type: .withoutResponse)
     }
 
+    public func send(message: MeshMessages, toNodeNamed name: String, forCharacteristic characteristic: CBMutableCharacteristic) {
+        guard let peripheral = nodes[name] else { return }
+        
+        peripheral.writeValue(message.messageType, for: characteristic, type: .withoutResponse)
+    }
+    
     public func sendToAllNodes(message: MeshMessages) {
         for node in listConnectedNodes() {
             send(message: message, toNodeNamed: node)
@@ -42,19 +53,63 @@ public class MeshManager : NSObject {
     }
 }
 
+extension MeshManager : CBPeripheralManagerDelegate {
+    public func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
+        if peripheral.state == .poweredOn {
+            print("peripheral is powered on")
+            characteristic = CBMutableCharacteristic(type: CBUUID(string: "12EC1524-CEC6-11E5-B3AE-0002A5D5C51B"),
+                                                         properties: [CBCharacteristicProperties.read, CBCharacteristicProperties.write, CBCharacteristicProperties.writeWithoutResponse],
+                                                         value: nil,
+                                                         permissions: [CBAttributePermissions.readable, CBAttributePermissions.writeable])
+            let service = CBMutableService(type: CBUUID(string: "12ec7140-cec6-11e5-b3ae-0002a5d5c51b"), primary: true)
+            service.characteristics = [(characteristic)!]
+
+            peripheralManager?.add(service)
+            print("UUID of our characteristic is \(characteristic?.uuid)")
+            
+            peripheralManager?.startAdvertising([CBAdvertisementDataServiceUUIDsKey : [service.uuid], CBAdvertisementDataLocalNameKey: "foo"])
+ 
+        } else {
+            print("Peripheral Manager for Bluetooth is not on")
+        }
+        
+    }
+    
+    public func peripheralManagerDidStartAdvertising(_ peripheral: CBPeripheralManager, error: Error?) {
+        if ((error) != nil) {
+            print("error starting advertising: \(error.debugDescription)")
+        }
+    }
+    
+    public func peripheralManager(_ peripheral: CBPeripheralManager, didAdd service: CBService, error: Error?) {
+        print("Service added")
+        let uuid = service.characteristics?.first?.uuid
+        print("UUID of added service characteristic is \(uuid)")
+        if ((error) != nil) {
+            print("error adding service")
+        }
+    }
+    
+    public func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
+        print("Received write request!")
+    }
+
+
+}
+
 extension MeshManager : CBCentralManagerDelegate {
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == .poweredOn {
-            self.centralManager?.scanForPeripherals(withServices: nil, options: nil)
+            //self.centralManager?.scanForPeripherals(withServices: nil, options: nil)
         } else {
-            print("Device Bluetooth is not on")
+            print("Central Manager for Bluetooth is not on")
         }
     }
 
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         guard let name = peripheral.name else { return }
 
-        if name.contains("VB-") {
+        if name.contains("Mesh-1BD0") {
             nodes[name] = peripheral
             centralManager?.connect(peripheral, options: nil)
             print("connecting to \(name)")
@@ -95,7 +150,12 @@ extension MeshManager : CBPeripheralDelegate {
         }
 
         guard let name = peripheral.name else { return }
-        send(message: .Light(color: .White), toNodeNamed: name)
+        
+        print("UUID of discovered characteristic is \(peripheral.services?.first?.characteristics?.first?.uuid)")
+        
+        print("About to send message to \(peripheral.name)")
+        send(message: .Broadcast(message: "hi"), toNodeNamed: name)
+        //send(message: .Light(color: .White), toNodeNamed: name)
     }
 }
 
