@@ -90,7 +90,13 @@ extension MeshManager : CBPeripheralManagerDelegate {
     }
     
     public func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
-        print("Received write request!")
+        if (requests.first?.value?.first == 3) {
+            print("Received HEARTBEAT!")
+        } else if (requests.first?.value?.first == 6) {
+            print("Received VOTING HB!")
+        } else {
+            print("Received some other kind of write request! Message type is \(requests.first?.value?.first)")
+        }
     }
 
 
